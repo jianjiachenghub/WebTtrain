@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#aaa{ 
+			    border: 20px solid #000; 
+			    margin: 10px; 
+			    padding: 30px; 
+			    background: #eee; 
+			    height: 350px; 
+			    width: 500px; 
+			    font-size: 50px;
+				overflow: auto;
+			} 
+		</style>
+	</head>
+	<body>
+		<div id="aaa">
+			<div>哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇哇</div>
+		啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊
+		</div>
+	</body>
+	<script type="text/javascript">
+		var div=document.getElementById("aaa")
+		div.onscroll=function(){
+			console.log(div.scrollTop)
+		}
+		
+		console.log(div.offsetWidth)
+	</script>
+</html>

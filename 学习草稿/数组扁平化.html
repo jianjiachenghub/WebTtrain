@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		input{
+    width: 160px;
+    height: 76px;
+    border-radius: 4px;
+    border: 1px solid #DDDEEB;
+    font-size: 12px;
+    box-sizing: border-box;
+    padding: 45px 5px 5px 5px;
+    line-height: 76px;
+}
+	</style>
+	<body>
+		<input type="textarea"  />
+	</body>
+	<script>
+		const flatten = (arr) => {
+  let result = [];
+  arr.forEach((item, i, arr) => {
+    // 若为数组,递归调用 faltten,并将结果与result合并
+    if (Array.isArray(item)) {
+      result = result.concat(flatten(item));
+    } else {
+      result.push(arr[i])
+    }
+  })
+  return result;
+};
+const arr = [1, [2, [3, 4, 5]]];
+console.log(flatten(arr)); // [1, 2, 3, 4, 5]
+	</script>
+</html>

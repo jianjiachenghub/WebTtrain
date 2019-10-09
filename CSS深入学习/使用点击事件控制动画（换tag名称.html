@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>使用点击事件控制动画开始</title>
+</head>
+<style type="text/css">
+    @keyframes colorchange {
+        0% {
+            background: yellow
+        }
+        100% {
+            background: blue
+        }
+    }
+
+    .box {
+        width: 100px;
+        height: 100px;
+        border: 1px solid black;
+    }
+
+    .changing {
+        animation: colorchange 2s cubic-bezier(.17,.67,.83,.67);
+    }
+</style>
+<body>
+<div class="box">
+</div>
+
+<div class="runButton">Click me to run the animation</div>
+</body>
+<script type="text/javascript">
+    function play() {
+        document.querySelector(".box").className = "box";
+        //document.querySelector(".box").className = "box changing";//使用此意味着动画只会执行一次
+        window.requestAnimationFrame(function(time) {
+            window.requestAnimationFrame(function(time) {
+                document.querySelector(".box").className = "box changing";
+            });
+         });
+    }
+    document.querySelector(".runButton").addEventListener("click", play, false);
+</script>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background-color: green;margin: 0px;border:5px solid red;height:1920px;" onscroll="body_scroll()">
+body
+<div class="div1" style="width:300px;height:2000px;margin:30px; padding:50px;background-color: #0e85d5;">
+    class="div1"
+    <div class="div2" style="width: 500px;height: 200px;background-color: #30a2ca;">
+        class="div2"
+    </div>
+</div>
+
+</body>
+
+<script>
+    console.group('******************** window ********************');
+    //浏览器窗口的宽度，包括滚动条和边框（可变）
+    var w1 = window.outerWidth;
+    //浏览器窗口的高度，包括边框、工具栏（可变）
+    var h1 = window.outerHeight;
+    console.log('浏览器窗口的宽度，包括滚动条和边框（可变）：',w1);
+    console.log("浏览器窗口的高度，包括边框、工具栏（可变）：",h1);
+
+    //浏览器可视窗口的宽度，不包括边框（可变）
+    var w2 = window.innerWidth;
+    //浏览器可视窗口的宽度，不包括边框、工具栏、调试窗口（可变）
+    var h2 = window.innerHeight;
+    console.log('                浏览器可视窗口的宽度，不包括边框（可变）：',w2);
+    console.log('浏览器可视窗口的宽度，不包括边框、工具栏、调试窗口（可变）：',h2);
+
+    //当前浏览器屏幕的宽度（不变）
+    var w3 = window.screen.width;
+    //当前浏览器屏幕的高度（不变）
+    var h3 = window.screen.height;
+    console.log('当前浏览器屏幕的宽度（不变）：',w3);
+    console.log('当前浏览器屏幕的高度（不变）：',h3);
+
+    //浏览器窗口的可用宽度，不包括任务栏（可变）
+    var w4 = window.screen.availWidth;
+    //浏览器窗口的可用高度，不包括任务栏（可变）
+    var h4 = window.screen.availHeight;
+
+    console.log('浏览器窗口的可用宽度，不包括任务栏（可变）:',w4);
+    console.log('浏览器窗口的可用高度，不包括任务栏（可变）:',h4);
+
+    //浏览器距屏幕顶部的高度（可变），FireFox浏览器中通过screenX获取
+    var w5 = window.screenTop || window.screenY;
+    //浏览器距屏幕顶部的宽度（可变），FireFox浏览器中通过screenY获取
+    var h5 = window.screenLeft || window.screenX;
+    console.log('浏览器距屏幕顶部的高度（可变）：',w5);
+    console.log('浏览器距屏幕顶部的宽度（可变）：',h5);
+    console.groupEnd('组一');
+
+    console.group('******************** document ************************');
+    var div1 = document.querySelector('.div1');
+    var div2 = document.querySelector('.div2');
+    //body的宽度（不包括外边距）
+    var w1 = document.body.clientWidth;
+    //body的高度（不包括外边距）
+    var h1 = document.body.clientHeight;
+    console.log('body的宽度为：',w1);
+    console.log('body的高度为：',h1);
+    console.log('div1的宽度为：',div1.clientWidth);
+    console.log('div1的高度为：',div1.clientHeight)
+    console.log('div2的宽度为：',div2.clientWidth);
+    console.log('div2的高度为：',div2.clientHeight);
+    console.log('body的上边框宽度：',document.body.clientTop);
+    console.log('body的左边框宽度：',document.body.clientLeft);
+    console.log('body的宽度aaa：',document.body.clientWidth);
+    console.log('body的总宽度(border+width+padding)：',document.body.offsetWidth);
+    console.log('body的总高度(border+height+padding):',document.body.offsetHeight);
+    console.log('div1的上边距：',div1.offsetTop);
+    console.log('div1的左边距：',div1.offsetLeft);
+    console.log('div2的上边距:',div2.offsetTop);
+    console.log('div2的左边距:',div2.offsetLeft);
+    console.groupEnd('组二');
+
+    console.group('************************* scroll *******************************');
+    console.log('body滚动宽度',document.body.scrollWidth);
+    console.log('body滚动高度',document.body.scrollHeight);
+
+
+    function body_scroll(){
+        console.log(this)
+        console.log('--body滚动宽度',document.body.scrollTop);
+        console.log('--body滚动高度',document.body.scrollLeft);
+        console.log('--window scrollY：',window.scrollY);
+        console.log('--window scrollX：',window.screenX);
+        console.log('---------------------------------------');
+    }
+
+</script>
+</html>

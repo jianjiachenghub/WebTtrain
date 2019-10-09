@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态搜索框的例子</title>
+</head>
+<style type="text/css">
+    input[name=search] {
+        width: 130px;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        background-color: white;
+        background-image: url('img/search.png');
+        background-position: 5px 5px;
+        background-repeat: no-repeat;
+        padding: 12px 20px 12px 40px;
+        -webkit-transition: width 1s linear;
+        transition: width 1s linear;
+    }
+
+    input[name=search]:focus {
+        width: 100%;
+    }
+</style>
+<body>
+<p>动态搜索框:</p>
+
+<form>
+    <input type="text" name="search" >
+</form>
+</body>
+</html>

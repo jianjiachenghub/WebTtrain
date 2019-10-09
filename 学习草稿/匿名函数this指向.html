@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var a = "bbb"
+		var obj = {
+			a:"aaa",
+			foo:(function(){
+				console.log(this.a)//bbb
+			})()
+		}
+		/*不加自动执行用obj调用
+		obj.foo()//aaa*/
+	</script>
+</html>

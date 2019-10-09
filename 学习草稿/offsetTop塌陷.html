@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#one{
+				
+			}
+			#two{
+				margin-top:10px ;
+				
+			}
+			#three{
+				margin-top: 10px;
+			
+			}
+			img{
+				height: 100px;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="one">
+			<img id="two" src="http://jianjiacheng.com/img/01.jpg" alt="" />
+			<img id="three" src="img/head.jpg" alt="" />
+		</div>
+	</body>
+	<script type="text/javascript">
+		var one=document.querySelector("#two");
+		console.log(one.offsetTop)//img不设置heightoffsetop会塌陷
+		var two=document.querySelector("#three");
+		console.log(two.offsetTop)
+	</script>
+</html>

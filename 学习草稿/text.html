@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+
+	<body style="height: 2000px;">
+		<button id='btn'>按钮</button>
+		<script type="text/javascript">
+			var timer = null;
+			function debounce() {
+				// 记录上一次的延时器
+				
+					console.log(timer)
+			
+					clearTimeout(timer)
+					timer = setTimeout(function() {
+					console.log("aaa")
+					}, 1000)
+				
+			}
+			document.getElementById('btn').onclick = debounce
+		</script>
+	</body>
+
+</html>

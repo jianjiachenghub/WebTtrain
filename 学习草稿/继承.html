@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+/*		function Parent() {
+   this.name = 'parent1';
+ }
+ 
+ Parent.prototype.say = function () {
+ 	console.log('parent1')
+ }
+ 
+ function Child() {
+   Parent.call(this);
+   this.type = 'child';
+ }
+ Child.prototype.listen=function(){
+ 	console.log('child1')
+ }
+
+ console.log(new Child());
+ const child = new Child();
+ console.log(child.constructor)*/
+
+
+/*function Parent2() {
+  this.name = 'parent2';
+  this.play = [1, 2, 3];
+}
+
+function Child2() {
+  this.type = 'child2';
+}
+Child2.prototype = new Parent2();
+
+console.log(new Child2);
+
+var s1 = new Child2();
+var s2 = new Child2();
+*/
+/*var a = {  rep : 'apple' }
+var b = new Object(a)
+console.log(b) // {rep: "apple"}
+console.log(b.__proto__) // {}
+console.log(b.rep) // {rep: "apple"}*/
+
+// Object.create() 方式创建
+
+
+/*var a = { rep: 'apple' }
+var b = Object.create(a)
+console.log(b)  // {}
+console.log(b.__proto__) // {rep: "apple"}
+console.log(b.rep) // {rep: "apple"}
+var o = Object.create(Object.prototype,{
+    a:{
+           writable:true,
+        configurable:true,
+        value:'1'
+    }
+})
+console.log(o)*/
+
+/*var person = {
+	friends : ["Van","Louis","Nick"]
+};
+var anotherPerson = Object.create(person);
+
+anotherPerson.friends.push("Rob");
+var yetAnotherPerson = Object.create(person);
+yetAnotherPerson.friends.push("Style");
+alert(person.friends);//"Van,Louis,Nick,Rob,Style"
+console.log(anotherPerson)
+*/
+
+/*function createAnother(original){
+  var clone = object(original); // 通过调用 object() 函数创建一个新对象
+  clone.sayHi = function(){  // 以某种方式来增强对象
+    alert("hi");
+  };
+  return clone; // 返回这个对象
+}
+
+var person = {
+  name: "Nicholas",
+  friends: ["Shelby", "Court", "Van"]
+};
+var anotherPerson = createAnother(person);
+anotherPerson.sayHi(); //"hi"*/
+function aa(name){
+	this.name = name
+}
+var a = new aa("jain")
+console.log(aa.a)
+function Super(name){
+    this.name = name;
+    this.colors = ["red", "blue", "green"];
+}
+console.log(Sub.prototype)
+
+Super.prototype.sayName = function (){
+    alert(this.name);
+};
+
+function Sub(name, age){
+    Super.call(this, name);    //继承了Super 属性
+    this.age = age;
+}
+
+
+Sub.prototype = Super.prototype;     // 继承了Super 原型链上的方法
+
+function myNew() {
+    var obj = new Object(),
+    Constructor = [].shift.call(arguments);
+    obj.__proto__ = Constructor.prototype;
+     var ret = Constructor.apply(obj, arguments);
+    return typeof ret === 'object' ? ret : obj;
+    return obj;
+};
+Sub.prototype.constructor = Sub;
+Sub.prototype.sayAge = function (){
+    alert(this.age);
+};
+
+var instance1 = new Sub("Luke", 18);
+console.log(instance1 )
+instance1.colors.push("black");
+alert(instance1.colors);    //"red, blue, green, black"
+instance1.sayName();    //"Luke"
+instance1.sayAge()    //18
+
+var instance2 = new Sub("Jack", 20);
+alert(instance2.colors);    //"red, blue, green"
+instance2.sayName();    //"Jack"
+instance2.sayAge()    //20
+instance1 instanceof Sub//true
+instance1 instanceof Super//true
+
+
+/*const person = {
+  isHuman: false,
+  printIntroduction: function () {
+    console.log(123);
+  }
+};
+
+const me = Object.create(person,{
+  // foo会成为所创建对象的数据属性,且foo必须为一个对象；可设置新对象的foo属性的可读性，可配置性以及值
+  foo: { 
+    writable:true,
+    configurable:true,
+    value: "hello" 
+  }
+  });
+
+me.name = "Matthew"; // "name" is a property set on "me", but not on "person"
+me.isHuman = true; // inherited properties can be overwritten
+console.log(me)*/
+	</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		//getter 是一种获得属性值的方法，setter是一种设置属性值的方法。
+		//setter和getter都用处都是对赋值和取值操作做进一层封装，在赋值之前或者赋值之后做某些操作
+		//比如可以判断复制是否符合字段，如果不符合就提示。
+		//demo1
+        var obj = {
+
+            age:19,
+            get getage(){
+                return this.age;
+            },
+            set setage(x){
+            	if(x>=0&&x<=150)
+            	{
+            		this.age = x;
+            	}else{
+            		this.age = 'error';
+            	}
+                
+            }
+        }
+        console.log(obj.getage);
+        obj.setage = 101;
+        console.log(obj.getage);
+        obj.setage=200;
+        console.log(obj.getage);
+
+        //demo2 先定义后创建属性
+        
+        var obj2 = {
+
+            age:20
+        }
+
+        obj2.__defineGetter__('name',function(){return this.age});
+        obj2.__defineSetter__('name',function(name){this.age = name;})
+
+        console.log(obj2.name)
+        obj2.name = 201;
+        console.log(obj2.name);
+    </script>
+	</script>
+</html>

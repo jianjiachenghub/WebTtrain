@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="one">111</div>
+</body>
+<script>
+    //匿名函数的执行环境具有全局性???
+    var div=document.getElementById("one");
+    function f2(){
+    console.log(this)
+    }
+    div.onclick =function () {
+        console.log(this)
+        f2()
+    }
+    var name = 'window'
+    var person = {
+        name :'one',
+        sayOne:function () {
+            console.log(this.name)
+        },
+        sayTwo:function () {
+            var _that=this;
+            return function () {
+                console.log(this.name)
+            }
+        },
+        wrap: function(){
+            (function (){//匿名函数的执行环境具有全局性？匿名函数不属于当前对象？
+                console.log(this.name)
+            })()
+        }
+    }
+    person.sayOne()//one
+    person.sayTwo()()  // window 返回的匿名函数在全局执行所以是window
+    person.wrap()//window
+    console.log("-------")
+    var me = {
+        name : 'one',
+        sayMyName : function(){
+            console.log(this.name)
+            var name="two"
+            function displayName(){//不是匿名函数的情况
+                console.log(this.name)
+            }
+            displayName();//调用displayName的既不是对象，所以重定项到了window？
+        }
+    }
+    me.sayMyName();//window
+
+
+</script>
+</html>

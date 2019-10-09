@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var x = navigator;
+    document.write("CodeName=" + x.appCodeName);
+    document.write("<br />");
+    document.write("MinorVersion=" + x.appMinorVersion);
+    document.write("<br />");
+    document.write("Name=" + x.appName);
+    document.write("<br />");
+    document.write("Version=" + x.appVersion);
+    document.write("<br />");
+    document.write("CookieEnabled=" + x.cookieEnabled);
+    document.write("<br />");
+    document.write("CPUClass=" + x.cpuClass);
+    document.write("<br />");
+    document.write("OnLine=" + x.onLine);
+    document.write("<br />");
+    document.write("Platform=" + x.platform);
+    document.write("<br />");
+    document.write("UA=" + x.userAgent);
+    document.write("<br />");
+    document.write("BrowserLanguage=" + x.browserLanguage);
+    document.write("<br />");
+    document.write("SystemLanguage=" + x.systemLanguage);
+    document.write("<br />");
+    document.write("UserLanguage=" + x.userLanguage);
+    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+                   var isOpera = userAgent.indexOf("Opera") > -1; //判断是否Opera浏览器
+                    var isChrome = userAgent.indexOf("Chrome") > -1; //判断是否Opera浏览器
+                   var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera;
+                    var isFF = userAgent.indexOf("Firefox") > -1; //判断是否Firefox浏览器
+                     var isSafari = userAgent.indexOf("Safari") > -1; //判断是否Safari浏览器
+</script>
+</html>

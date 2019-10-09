@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+var makePerson = function(favoriteColor, name, age) {
+	console.log(arguments)
+ favoriteColor = "green";
+ name = arguments[0];
+ age = arguments[1];
+ console.log(arguments)
+ 
+ return {
+ name: name,
+ age: age,
+ favoriteColor: favoriteColor
+ };
+};
+
+var person = makePerson("red", "Jon",19);
+console.log(person);
+</script>
+</html>

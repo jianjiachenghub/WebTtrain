@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		const memoize2 = fn => {
+		  const cache = new Map();
+		  const cached = function(...val) {
+		    return cache.has(val) ? cache.get(val) : cache.set(val, fn.apply(this, val)) && cache.get(val);
+		  };
+		  cached.cache = cache;
+		  return cached;
+		};
+		
+				function sum2(n1, n2) {
+		  const sum = n1 + n2
+		  console.log(`${n1}+${n2}=${sum}`)
+		  return sum
+		}
+		
+		const anagramsCached = memoize2(sum2);
+anagramsCached(9,9); // takes a long time
+anagramsCached(9,9); // returns virtually instantly since it's now cached
+console.log(anagramsCached.cache); // The cached anagrams map
+		
+/*		function memoize(func) {
+		  const cache = new Map()
+		  return function(...args) {
+		    const key = JSON.stringify(args)
+		    if (cache.has(key)) {
+		      return cache.get(key)
+		    }
+		    const result = func.apply(this, args)
+		    cache.set(key, result)
+		    return result
+		  }
+		}
+		
+		function sum(n1, n2) {
+		  const sum = n1 + n2
+		  console.log(`${n1}+${n2}=${sum}`)
+		  return sum
+		}
+		const memoizedSum = memoize(sum)
+		memoizedSum(1, 2) // 会打印出：1+2=3
+		memoizedSum(1, 2) // 没有输出
+		//memoizedSum在第一次执行时将执行结果缓存在了闭包中的缓存对象cache中，因此第二次执行时，由于输入参数相同，直接返回了缓存的结果。*/
+	</script>
+</html>

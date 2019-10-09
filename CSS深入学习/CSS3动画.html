@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    @keyframes myfirst
+    {
+        from{transform: rotate(0deg)}to{transform: rotate(360deg)}
+    }
+    .loading{
+        animation: myfirst 1.5s infinite linear;
+        border: 16px solid #f3f3f3;
+        border-radius: 50%;
+        border-top:16px solid blue;
+        width: 120px;
+        height: 120px;
+    }
+
+    @keyframes moveHover {
+        0% {
+            width: 5px;
+            background: white;
+        }
+        50% {
+            width: 200px;
+            background: blue;
+        }
+        100% {
+            width: 400px;
+            background: red;
+        }
+    }
+    .move {
+        width: 0px;
+        height: 10px;
+        animation: moveHover 5s infinite linear;
+
+    }
+
+    .change
+    {
+        transition: width 2s;
+        font-size: 10px;
+        width: 100px;
+        height: 20px;
+        background: yellow;
+        -moz-transition: width 2s;	/* Firefox 4 */
+        -webkit-transition: width 2s;	/* Safari 和 Chrome */
+        -o-transition: width 2s;	/* Opera */
+    }
+    .change:hover
+    {
+        width: 500px;
+    }
+    .bigger{
+        font-size: 20px;
+        width: 0;
+        height: 0;
+        background: #2A9F00;
+        transition: transform 5s;
+    }
+    .bigger:hover{
+        transform: scale(10);
+    }
+</style>
+<body>
+<div class="loading"></div>
+<div class="move"></div>
+<div class="change">鼠标滑过</div>
+<div class="bigger">大</div>
+</body>
+</html>

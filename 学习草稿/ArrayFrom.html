@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+		var arr=[
+			0,
+			[1,1,1],
+			[{name:2},2,2],
+			[3,3,4],
+		]
+/*		var arr2 = arr
+		arr2[0]=-1;
+		arr2[1][0]=11;
+		console.log(arr2)
+		console.log(arr)*/
+/*		var arr2 = Array.from(arr)
+		arr2[0]=-1;
+		arr2[1][0]=11;
+		console.log(arr2)
+		console.log(arr)*/
+		function deepCloneArray(arr){
+			if(Array.isArray(arr)){
+				return Array.from(arr,deepCloneArray)
+			}else{
+				return arr
+			}
+		}
+		var arr2 = deepCloneArray(arr)
+		arr2[0]=-1;
+		arr2[1][0]=11;
+		arr2[2][0].name=22;
+		console.log(arr2)
+		console.log(arr)
+		
+		var nullArray = new Array(3)
+		console.log(nullArray)
+
+		nullArray.forEach((value,index)=>{
+			console.log(index)
+		})
+		var length  = 3
+		console.log({length })
+		console.log({length:3 })
+		
+		//console.log(nullArray[0])
+	</script>
+</html>

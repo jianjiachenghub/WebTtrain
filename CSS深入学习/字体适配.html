@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>演示单位的例子</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+    html {
+        font-size: 62.5%;
+    }
+    #test1{
+        width: 25%;
+        border: 1px dotted black;
+    }
+    #test1 span {
+        font-size: 1.6em;
+    }
+
+    #test2 span {
+        font-size: 1.6rem;
+    }
+    #test3 span {
+        font-size: 10vh;
+    }
+</style>
+<body>
+<div>浏览器高度为<span id="span_client_height"></span></div>
+<div id="test1">
+    <span>Outer <span>inner</span> outer</span>
+</div>
+<div id="test2">
+    <span>Outer <span>inner</span> outer</span>
+</div>
+<div style="font-size: 40px">
+    <span style="font-size: 25%">xxxxx</span>
+</div>
+<div id="test3">
+    <span>xxxxx</span>
+</div>
+</body>
+<script type="text/javascript">
+    window.onload=function () {
+        getClientHeight();
+    }
+    window.onresize=function () {
+        getClientHeight();
+    }
+
+    function getClientHeight() {
+        var client_height=document.getElementById("span_client_height");
+        client_height.innerText=window.innerHeight+"px";
+    }
+</script>
+</html>

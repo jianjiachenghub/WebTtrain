@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小球弹起的动画演示</title>
+</head>
+<style type="text/css">
+    .ball {
+        width: 5%;
+        height: 9%;
+        background: #000000;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        animation: move 4s cubic-bezier(0.36, 1.7, 0.26, 0.61) 1s infinite;
+    }
+
+    @keyframes move {
+        0% {
+            top: 0;
+        }
+        100% {
+            top: 91%;
+        }
+    }
+</style>
+<body>
+<div class="ground">
+    <div class="ball" id="ball"></div>
+</div>
+</body>
+</html>

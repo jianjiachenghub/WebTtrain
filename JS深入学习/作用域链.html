@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var scope = "global scope";
+    function checkscope(){
+        var scope2 = 'local scope';
+        return scope2;
+    }
+    checkscope();
+
+var a = 20;
+test()
+function test() {
+    var b = a + 10;
+
+    function innerTest() {
+        var c = 10;
+        return b + c;
+    }
+
+    return innerTest();
+}
+
+</script>
+</html>

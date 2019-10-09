@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>滚动加载图片</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<style>
+    #img {
+        width: 100%;
+    }
+</style>
+<body>
+<div id="img">
+</div>
+</body>
+<script type="text/javascript">
+    var gImg = ['http://www.xiexianbo.xin/wp-content/uploads/2018/09/QQ20180907-202218@2x-1024x411.png', 'http://www.xiexianbo.xin/wp-content/uploads/2018/09/QQ20180907-202955@2x-1024x112.png', 'http://www.xiexianbo.xin/wp-content/uploads/2018/08/WX20180828-110316@2x-721x1024.png', 'http://www.xiexianbo.xin/wp-content/uploads/2018/08/3-1024x564.png', 'http://www.xiexianbo.xin/wp-content/uploads/2018/08/5-1024x529.png', 'http://www.xiexianbo.xin/wp-content/uploads/2018/08/6-1024x421.png', 'http://reference.xiexianbo.xin/img/MergeRequest/5.png', 'http://reference.xiexianbo.xin/img/MergeRequest/6.png'];
+    var num;
+    var img;
+    var n = 0;
+    gImg.map(function (item) {
+        var _img = document.createElement("img");
+        _img.setAttribute("src", "img/loading.gif");
+        _img.setAttribute("data-src", item);
+        _img.setAttribute('style', 'width:40%;margin-left:30%');
+        document.getElementById("img").appendChild(_img)
+        num = document.getElementsByTagName('img').length;
+        img = document.getElementsByTagName("img");
+    })
+    lazyload()
+
+    function lazyload() { //监听页面滚动事件
+        var seeHeight = document.documentElement.clientHeight; //可见区域高度
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop; //滚动条距离顶部高度
+        for (var i = n; i < num; i++) {
+            if (img[i].offsetTop < seeHeight + scrollTop) {
+                console.log(i);
+                console.log(img[i].offsetTop)
+                console.log(seeHeight)
+                console.log(scrollTop)
+                if (img[i].getAttribute("src") == "img/loading.gif") {
+
+                    img[i].src = img[i].getAttribute("data-src");
+                }
+                n = i + 1;
+            }
+        }
+    }
+
+    // 简单的节流函数
+    function throttle(fun, delay, time) {
+        var timeout;
+        var startTime = new Date();
+        return function () {
+            var context = this;
+            var args = arguments;
+            var curTime = new Date();
+            clearTimeout(timeout);
+            if (curTime - startTime >= time) {//
+                fun.apply(context, args);
+                startTime = curTime;
+            } else {
+                timeout = setTimeout(function () {
+                    fun.apply(context, args);
+                }, delay);
+            }
+        };
+    };
+    // 实际想绑定在 scroll 事件上的 handler
+    //function lazyload(event) {}
+    // 采用了节流函数
+    window.addEventListener('scroll', throttle(lazyload, 500, 1000));
+
+</script>
+</html>
