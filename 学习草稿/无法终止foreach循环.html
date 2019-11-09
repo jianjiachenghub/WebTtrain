@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    s = [];
+    [1,2,3,4,1].forEach((item)=>{
+        console.log(this)
+if(item>3) return
+  s.push(item)	
+})
+console.log(s) // [1,1,1]
+</script>
+</html>
