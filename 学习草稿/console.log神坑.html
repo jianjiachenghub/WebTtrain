@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script>
+/*		let test = {}
+		console.log(test)
+		console.log(test.a)
+		test.a="赋值后"
+		*/
+		
+		
+		let obj = {
+			a:"a",
+			b:{
+				bb:'bb'
+			},
+			timeOut:"now"
+		}
+/*		console.log(obj)
+		console.log(obj.a)
+		console.log(JSON.stringify(obj))
+		
+		obj.a="a修改后"
+		obj.b.bb="bb修改后"*/
+		
+		console.log(obj)
+		console.log(obj)
+		console.log(obj.timeOut)
+		
+		
+		setTimeout(()=>{
+			obj.timeOut="五秒后"
+		},5000)
+		
+	</script>
+</html>

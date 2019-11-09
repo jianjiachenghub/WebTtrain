@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 自基本类型则只存在于一行代码的执行瞬间，然后立即被销毁，这意味着我们不能在运行时为基本类型添加属性和方法
+    var name = "ConardLi";
+    name.color = "red"; //
+    console.log(name.color); // undefined
+    console.log(Object);
+    console.log(window);
+    console.log(toString);
+    console.log("------------------------------------");
+
+    // typeof 用来判断基本类型
+    typeof "seymoe"; // 'string'
+    typeof true; // 'boolean'
+    typeof 10; // 'number'
+    typeof Symbol(); // 'symbol'
+    typeof null; // 'object' 无法判定是否为 null
+    typeof undefined; // 'undefined'
+
+    typeof {}; // 'object'
+    typeof []; // 'object'
+    typeof (() => {}); // 'function'
+    console.log("------------------------------------");
+
+    // 通过 instanceof 操作符也可以对对象类型进行判定，其原理就是测试构造函数的 prototype 是否出现在被检测对象的原型链上。
+
+    //即 Array.prototype.__proto__ === Object.prototype，所以 Object 构造函数在 arr 的原型链上
+    let arr = [];
+    let obj = {};
+    let str = "asds";
+    console.log(str instanceof String);
+    arr instanceof Array; // true
+    arr instanceof Object; // true
+    obj instanceof Object; // true
+    console.log("------------------------------------");
+
+    // constructor即构造函数
+    console.log("测试 Number ->", (1).constructor === Number); // true
+    console.log("测试 Boolean ->", true.constructor === Boolean); // true
+    console.log("测试 String ->", "".constructor === String); // true
+    // console.log('测试 null ->', null.constructor === null); // TypeError: Cannot read property 'constructor' of null
+    // console.log('测试 undefined ->', undefined.constructor); // TypeError: Cannot read property 'constructor' of undefined
+    console.log("测试 NaN ->", NaN.constructor === Number); // true 注意:NaN和infinity一样是Number类型的一个特殊值
+    console.log("测试 function ->", function() {}.constructor === Function); // true
+    console.log("测试 Object ->", {}.constructor === Object); // true
+    console.log("测试 Array ->", [].constructor === Array); // true
+    console.log("测试 Date ->", new Date().constructor === Date); // true
+    console.log("测试 Error ->", new Error().constructor === Error); // true
+    console.log("测试 RegExp ->", new RegExp().constructor === RegExp); // true
+    console.log("测试 Symbol ->", Symbol().constructor === Symbol); // true
+    console.log("测试 Map ->", new Map().constructor === Map); // true
+    console.log("测试 Set ->", new Set().constructor === Set); // true
+    console.log("------------------------------------")
+
+    // 每一个引用类型都有toString方法，默认情况下，toString()方法被每个Object对象继承。如果此方法在自定义对象中未被覆盖，toString() 返回 "[object type]"，其中type是对象的类型。
+    // 图1.png
+    console.log(Object.prototype.toString.call(123))
+  </script>
+</html>

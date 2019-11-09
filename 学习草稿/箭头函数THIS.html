@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		var obj = {
+			a:()=>{
+					console.log(this)
+				},
+			e:function(){
+				console.log(this)
+			},
+			b:{
+				c:()=>{
+					console.log(this)
+				},
+				d:"dd",
+				f:function(){
+					console.log(this)
+				}
+			}
+		}
+		obj.a();
+		obj.e();
+		obj.b.c();
+		obj.b.f();
+		
+		//多层嵌套只是对象嵌套，这时候没有作用域链的嵌套，实际上对箭头函数来说，还是只有自己一级的作用域，和上一层的window作用域
+		
+	</script>
+</html>

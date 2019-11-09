@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    /* 
+        这是一个手写的迭代器(Iterator)
+        满足迭代器协议的对象。
+        迭代器协议: 对象的next方法是一个无参函数，它返回一个对象，该对象拥有done和value两个属性： 
+    */
+    var it = makeIterator(["a", "b"]);
+
+    it.next(); // { value: "a", done: false }
+    it.next(); // { value: "b", done: false }
+    it.next(); // { value: undefined, done: true }
+
+    function makeIterator(array) {
+      var nextIndex = 0;
+      return {
+        next: function() {
+          return nextIndex < array.length
+            ? { value: array[nextIndex++], done: false }
+            : { value: undefined, done: true };
+        },
+      };
+    }
+
+    /* 
+        原生具备 Iterator 接口的数据结构如下。
+        Array
+        Map
+        Set
+        String
+        TypedArray
+        函数的 arguments 对象
+        NodeList 对象 
+    */
+    /* 
+        可迭代对象(Iterable)
+        满足可迭代协议的对象是可迭代对象。
+        可迭代协议: 对象的[Symbol.iterator]值是一个无参函数，该函数返回一个迭代器。
+    */
+   // for...of会获取可迭代对象的[Symbol.iterator]()，对该迭代器逐次调用next()，直到迭代器返回对象的done属性为true时，遍历结束
+    for (let value of ["a", "b", "c"]) {
+      console.log(value);
+    }
+
+    
+    /* 
+        使迭代器可迭代
+        makeIterator函数生成的迭代器并没有实现可迭代协议
+        所以不能在for...of等语法中使用。
+        可以为该对象实现可迭代协议，在[Symbol.iterator]函数中返回该迭代器自身,从新名了下函数名称createIterator
+    */
+    function createIterator(array) {
+      var nextIndex = 0;
+      return {
+        next: function() {
+          return nextIndex < array.length
+            ? { value: array[nextIndex++], done: false }
+            : { value: undefined, done: true };
+        },
+        [Symbol.iterator]: function () { 
+            console.log("返回的迭代器:",this)
+            return this 
+        }
+      };
+    }
+
+    var iterator = createIterator([1, 2, 3]);
+    console.log(...iterator)
+
+    let xx = {
+        [Symbol.iterator]:"xxx1"
+    }
+    console.log(xx)
+    console.log([Symbol.iterator])
+    console.log(xx[Symbol.iterator])
+
+
+    let objfor = {
+      a:1,
+      b:2,
+    }
+    for(let value of objfor){
+      console.log(value)
+    }
+
+
+    function TEST() {
+      var i = 1;
+
+      return function() {
+        console.log(i);
+        i = i + 1;
+        return i;
+      };
+    }
+    let TESTS = TEST();
+    TESTS();
+    /*     TESTS = null
+    TESTS = TEST() */
+    TESTS();
+  </script>
+</html>

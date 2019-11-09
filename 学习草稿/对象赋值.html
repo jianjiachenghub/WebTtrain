@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		const obj = {
+			a:1,
+			b:2,
+			c:{
+				d:1,
+				e:2,
+				h:{
+					hh:123
+				}
+			}
+		}
+		var x = {
+			f:1,
+			g:2
+		}
+		var key = 'c'
+		obj[key].h=x
+		console.log(obj)
+	</script>
+</html>
