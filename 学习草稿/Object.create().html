@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const person = {
+  isHuman: false,
+  printIntroduction: function () {
+    console.log(123);
+  }
+};
+
+const me = Object.create(person,{
+  // foo会成为所创建对象的数据属性,且foo必须为一个对象；可设置新对象的foo属性的可读性，可配置性以及值
+  foo: { 
+    writable:true,
+    configurable:true,
+    value: "hello" 
+  }
+  });
+
+me.name = "Matthew"; // "name" is a property set on "me", but not on "person"
+me.isHuman = true; // inherited properties can be overwritten
+console.log(me)
+</script>
+</html>

@@ -1,20 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Title</title>
-</head>
-<body>
-
-</body>
-<script>
-    new Promise(function () {
-        return "bbb"
-    }).then(function (data) {
-    console.log(data)
-        return "aaa"
-    }).then(function (data) {
-console.log(data)
+  </head>
+  <body></body>
+  <script>
+    /*     new Promise(function() {
+      return "bbb";
     })
-</script>
+      .then(function(data) {
+        console.log(data);
+        return "aaa";
+      })
+      .then(function(data) {
+        console.log(data);
+      }); */
+
+    setTimeout(function() {
+      console.log("定时器开始啦");
+    });
+
+    new Promise(function(resolve) {
+      console.log("马上执行for循环啦");
+      for (var i = 0; i < 101; i++) {
+        i == 99 ;
+
+      }
+
+      setTimeout(function() {
+      console.log("定时器开始啦2");
+      resolve(i)
+    });
+    }).then(function(i) {
+      console.log("执行then函数啦",i);
+    });
+
+    console.log("代码执行结束");
+    // .then是在promise被resolve后才能推入微任务
+  </script>
 </html>

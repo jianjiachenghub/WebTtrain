@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    aaobj = {
+      a: 123,
+      n: 123123,
+      c: 333
+    };
+    // 这里有个有趣的地方,其他方法都由Function类构造,而Function类由自己构造
+    var a = new Function();
+     // Object方法会根据放入的类型来创建对象,数字就是Number对象,bool就是Boolean对象
+    var b = new Object();
+    var c = new Array(2, 1, 3);
+
+    var x = new String(123); // 把 x 声明为 String 对象
+    var y = new Number(1); // 把 y 声明为 Number 对象
+    var z = new Boolean(1); //	把 z 声明为 Boolean 对象
+
+
+    console.log(Function,Object,Array)
+
+    function myfun(x,y){
+      var mycall = function(){
+        return 1
+      }
+      var data= 'data'
+      this.x = x
+      this.y = y  
+      this.sum = function(){
+        return x+y
+      }
+    }
+
+    myfun.prototype.sum = function(){
+      return this.x+this.y
+    }
+
+    myobj = new myfun(1,2)
+
+    console.log(a, b, c, x, y, z);
+    console.log(myfun)
+    console.log(myobj)
+/* 总结:js里万物皆为对象,最顶层为Object对象是一切的原型(起源) 注意这里的Object不是构造函Object()是一个切实的原型对象
+
+
+所以Object,Function,Array,String这些方法就想我们自定义的方法一样(只不过是js语言帮我们内置创建了这些方法)
+每个方法都有(可以说是创建了)自己的prototype(原型对象),然后这些原型对象的_proto_又都指向了最顶层的Object的原型对象(由此可以说明是顶层对象创建了每个方法的原型对象,也就是说方法类的原型对象是顶层Object类创建的实例)
+其中的Function方法较为特殊,Object(),Array(),String()这些方法都是有Function方法构造而来
+可以看到Array._proto_是一个function,也就是说Array._proto_指向的Function.prototype是一个function,其他普通方法的原型确是一个Object(Function.prototype的_proto_指向顶层对象原型)
+
+可以用new来让这些方法生成一个对象实例
+实例的_proto_指向创建他的方法的原型对象Array-> */
+
+
+    /*     console.log(aaobj.keys)
+    key = Object.keys(aaobj)
+    console.log(key)
+    console.log(Object) */
+  </script>
+</html>
