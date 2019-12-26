@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <style type="text/css"></style>
+  <body>
+    <canvas id="caibaojian" width="200" height="200"
+      >http://caibaojian.com/canvas-triangle.html</canvas
+    >
+  </body>
+  <script>
+    /*
+    let last;
+async function throwError() {  
+    await Promise.reject('error');    
+    last = await '没有执行'; 
+}
+throwError().then(success => console.log('成功', success,last))
+            .catch(error => console.log('失败',error,last))
+            */
+
+    let last;
+    async function throwError() {
+      try {
+        await Promise.reject("error");
+        last = await "没有执行";
+      } catch (error) {
+        console.log("has Error stop");
+      }
+    }
+    throwError()
+      .then(success => console.log("成功", success, last))
+      .catch(error => console.log("失败", error, last));
+  </script>
+</html>
