@@ -6,7 +6,12 @@
   </head>
   <body></body>
   <script>
-    /*     new Promise(function() {
+    // 直接在promise里面返回是无效的 会一直pending 
+    const x = new Promise(function() {
+      return "bbb";
+    })
+    console.log(x)
+       new Promise(function() {
       return "bbb";
     })
       .then(function(data) {
@@ -15,7 +20,7 @@
       })
       .then(function(data) {
         console.log(data);
-      }); */
+      });
 
     setTimeout(function() {
       console.log("定时器开始啦");

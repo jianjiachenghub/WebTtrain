@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <iframe src="" frameborder="0" id="12"></iframe>
+  </body>
+  <script>
+
+let dataURLtoBlob = function(dataurl) { 
+    var arr = dataurl.split(','),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]),
+        n = bstr.length,
+        u8arr = new Uint8Array(n);
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], { type: mime });
+}
+
+    let xhr = new XMLHttpRequest();
+    xhr.onload = () => {
+      let r = xhr.responseText;
+      console.log(r);// r 是HTML的字符串
+      // 如果r是什么base64 还是是吗其他的dataURL用dataURLtoBlob转就行了
+      let iframe = document.getElementById("12");
+      var blob = new Blob([r], { type: "text/html,charset=UTF-8" });
+      let url = window.URL.createObjectURL(blob);
+      iframe.src = url;
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "1.html";
+      a.click();
+    };
+    xhr.open("GET", "/find.html");
+    xhr.send();
+  </script>
+</html>
