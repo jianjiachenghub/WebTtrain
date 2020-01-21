@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // 引用带来的副作用
+    var a = [{ val: 1 },{}];//[{val: 2},{val: 2}]
+    var b = a.map(item => (item.val = 2));
+    var c = [1,2]
+    var d = c.map(item => item*item); //Array(2) [1, 4]
+    console.log(a,b,c,d)
+    // 期望：b 的每一个元素的 val 值变为 2
+    console.log(a[0].val); // 2
+  </script>
+</html>
