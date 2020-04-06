@@ -8,12 +8,13 @@
   </head>
   <body></body>
   <script>
+    // 可继续遍历的数据类型
     const mapTag = "[object Map]";
     const setTag = "[object Set]";
     const arrayTag = "[object Array]";
     const objectTag = "[object Object]";
     const argsTag = "[object Arguments]";
-
+    // 不可继续遍历的数据类型
     const boolTag = "[object Boolean]";
     const dateTag = "[object Date]";
     const numberTag = "[object Number]";
@@ -25,6 +26,7 @@
 
     const deepTag = [mapTag, setTag, arrayTag, objectTag, argsTag];
 
+    // 工具函数 while循环
     function forEach(array, iteratee) {
       let index = -1;
       const length = array.length;
@@ -33,12 +35,14 @@
       }
       return array;
     }
-
+    
+    // 判断是否为引用类型
     function isObject(target) {
       const type = typeof target;
       return target !== null && (type === "object" || type === "function");
     }
 
+    // 获取类型
     function getType(target) {
       return Object.prototype.toString.call(target);
     }

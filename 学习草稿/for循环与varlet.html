@@ -7,18 +7,28 @@
 	<body>
 	</body>
 	<script>
-		for(let a=0;a<10;a++){
+		// for循环的{}并不会创建块级作用域，函数才行，for可以用let来模拟(){}在一个块级作用域里
+		for(let a=0;a<2;a++){
 			var b=0;
 			console.log("a:",a)
 		}
-		console.log(b);
-		//console.log("window：",a)
+		for(var c=0;c<2;c++){
+			let d=0;
+			
+		}
+
+
 		blok()
 		function blok(){
 			let a=10;
-			for(var i=0;i<10;i++){
-				console.log(1)
+			for(var i=0;i<2;i++){
+				console.log(a)
 			}
+			console.log(i)
 		}
+
+		console.log("d:",d)
+		console.log("b:",b)
+		console.log("window：",a)// a not defined
 	</script>
 </html>
